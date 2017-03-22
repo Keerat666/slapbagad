@@ -1,0 +1,69 @@
+<!Doctype html>
+<html lang="eng-us">
+<head>
+    <title>Slap Bagad</title>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./flipclock.css">
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+		<script src="./flipclock.js" type="text/javascript"></script>	
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./style.css"/>
+  
+</head>
+    <body>
+        <div class="container-fluid">
+            <div class="container something">
+            <h1>SlapBagad</h1>
+            <div class="clock" style="margin:2em;">
+            </div>
+                
+            </div>
+            <a id="a" target="_blank" href="https://goo.gl/forms/GP6q4oKcCPxYSXcf1">
+            <div class="container butt">
+                    <p>Register</p> 
+                </div>
+                </a>
+            </div>
+        
+                
+        <!--script files -->
+        <script type="text/javascript">
+			var clock;
+			
+			$(document).ready(function() {
+				// Set dates.
+				var futureDate  = new Date("April 13, 2017 2:30 PM EDT");
+				var currentDate = new Date();
+
+				// Calculate the difference in seconds between the future and current date
+				var diff = futureDate.getTime() / 1000 - currentDate.getTime() / 1000;
+
+				// Calculate day difference and apply class to .clock for extra digit styling.
+				function dayDiff(first, second) {
+					return (second-first)/(1000*60*60*24);
+				}
+
+				if (dayDiff(currentDate, futureDate) < 100) {
+					$('.clock').addClass('twoDayDigits');
+				} else {
+					$('.clock').addClass('threeDayDigits');
+				}
+
+				if(diff < 0) {
+					diff = 0;
+				}
+
+				// Instantiate a coutdown FlipClock
+				clock = $('.clock').FlipClock(diff, {
+					clockFace: 'DailyCounter',
+					countdown: true
+				});
+			});
+		</script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+    </body>
+</html>
